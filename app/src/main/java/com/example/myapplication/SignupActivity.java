@@ -37,17 +37,19 @@ public class SignupActivity extends AppCompatActivity {
                 String confirmPass = etConfirmPassword.getText().toString();
 
                 // 3. Simple validation check
-                if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+                if (name.isEmpty() || email.isEmpty() || pass.isEmpty() || confirmPass.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else if (!pass.equals(confirmPass)) {
                     Toast.makeText(SignupActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // 4. Success logic: Navigate to the Main (To-do) Screen
+                    // 4. Success logic: Navigate directly to the Sign In (Login) Screen
                     Toast.makeText(SignupActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                    // CHANGED: Target changed from MainActivity.class to LoginActivity.class
+                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish(); // Closes the signup screen so the user can't go back to it
+
+                    finish(); // Closes the signup screen so the user can't back into it
                 }
             }
         });
